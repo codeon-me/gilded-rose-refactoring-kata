@@ -1,4 +1,5 @@
 import { Item, GildedRose } from '../app/gilded-rose';
+import { StrategyManager } from '../app/StrategyManager';
 
 const items = [
   new Item("+5 Dexterity Vest", 10, 20), //
@@ -13,7 +14,7 @@ const items = [
   new Item("Conjured Mana Cake", 3, 6)];
 
 
-const gildedRose = new GildedRose(items);
+const gildedRose = new GildedRose(new StrategyManager(), items);
 
 let days: number = 2;
 if (process.argv.length > 2) {

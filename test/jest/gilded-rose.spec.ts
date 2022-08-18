@@ -73,6 +73,71 @@ describe('Gilded Rose', () => {
       });
     });
 
+    describe('Conjured product', () => {
+      it('decreases product quality by 2 per each day before expiration date', () => {
+        const initialSellIn = 15;
+        const initialQuality = 20;
+
+        const item = new Item('Conjured Mana Cake', initialSellIn, initialQuality);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
+
+        let currentDay = 1;
+
+        while (item.sellIn > 0) {
+          const result = gildedRose.updateQuality();
+
+          expect(result.length).toBe(1);
+          expect(result[0].name).toBe('Conjured Mana Cake');
+          expect(result[0].sellIn).toBe(initialSellIn - currentDay);
+          expect(result[0].quality).toBe(initialQuality - 2 * currentDay);
+
+          currentDay++;
+        }
+      });
+
+      it('decreases product quality by 4 per each day after expiration date', () => {
+        const initialSellIn = 0;
+        const initialQuality = 10;
+
+        const item = new Item('Conjured Mana Cake', initialSellIn, initialQuality);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
+
+        let currentDay = 1;
+
+        while (item.quality > 0) {
+          const result = gildedRose.updateQuality();
+
+          expect(result.length).toBe(1);
+          expect(result[0].name).toBe('Conjured Mana Cake');
+          expect(result[0].sellIn).toBe(initialSellIn - currentDay);
+          expect(result[0].quality).toBe(initialQuality - 4 * currentDay);
+
+          currentDay++;
+        }
+      });
+
+      it('does not allow negative quality', () => {
+        const initialSellIn = 10;
+        const initialQuality = 0;
+
+        const item = new Item('Conjured Mana Cake', initialSellIn, initialQuality);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
+
+        let currentDay = 1;
+
+        while (item.quality > 0) {
+          const result = gildedRose.updateQuality();
+
+          expect(result.length).toBe(1);
+          expect(result[0].name).toBe('Conjured Mana Cake');
+          expect(result[0].sellIn).toBe(initialSellIn - currentDay);
+          expect(result[0].quality).toBe(0);
+
+          currentDay++;
+        }
+      });
+    });
+
     describe('Aged Brie product', () => {
       it('increases product quality by 1 per each day before expiration date', () => {
         const initialSellIn = 15;
@@ -214,5 +279,4 @@ describe('Gilded Rose', () => {
       });
     })
   });
-})
-;
+});
