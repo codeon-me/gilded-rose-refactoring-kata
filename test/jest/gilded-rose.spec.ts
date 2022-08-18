@@ -2,6 +2,9 @@ import {
   Item,
   GildedRose,
 } from '@/gilded-rose';
+import {
+  StrategyManager,
+} from '@/StrategyManager'
 
 describe('Gilded Rose', () => {
   describe('updateQuantity', () => {
@@ -11,7 +14,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 20;
 
         const item = new Item('Regular Test Product', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         let currentDay = 1;
 
@@ -32,7 +35,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 10;
 
         const item = new Item('Regular Test Product', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         let currentDay = 1;
 
@@ -53,7 +56,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 0;
 
         const item = new Item('Regular Test Product', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         let currentDay = 1;
 
@@ -76,7 +79,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 20;
 
         const item = new Item('Aged Brie', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         let currentDay = 1;
 
@@ -97,7 +100,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 50;
 
         const item = new Item('Aged Brie', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         let currentDay = 1;
 
@@ -120,7 +123,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 20;
 
         const item = new Item('Sulfuras, Hand of Ragnaros', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         const result = gildedRose.updateQuality();
 
@@ -137,7 +140,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 20;
 
         const item = new Item('Backstage passes to a TAFKAL80ETC concert', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         let currentDay = 1;
 
@@ -158,7 +161,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 20;
 
         const item = new Item('Backstage passes to a TAFKAL80ETC concert', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         let currentDay = 1;
 
@@ -179,7 +182,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 20;
 
         const item = new Item('Backstage passes to a TAFKAL80ETC concert', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         let currentDay = 1;
 
@@ -200,7 +203,7 @@ describe('Gilded Rose', () => {
         const initialQuality = 20;
 
         const item = new Item('Backstage passes to a TAFKAL80ETC concert', initialSellIn, initialQuality);
-        const gildedRose = new GildedRose([item]);
+        const gildedRose = new GildedRose(new StrategyManager(), [item]);
 
         const result = gildedRose.updateQuality();
 
