@@ -40,6 +40,18 @@ class SulfurasProductProcessor implements IProductProcessor {
   }
 }
 
+class ConjuredProductProcessor implements IProductProcessor {
+  process(item: Item) {
+    item.quality -= 2;
+
+    if (item.sellIn <= 0) {
+      item.quality -= 2;
+    }
+
+    item.sellIn--;
+  }
+}
+
 class DefaultProductProcessor implements IProductProcessor {
   process(item: Item) {
     item.quality--;
@@ -61,6 +73,8 @@ export class StrategyManager {
         return new BackstagePassProductProcessor();
       case 'Sulfuras, Hand of Ragnaros':
         return new SulfurasProductProcessor();
+      case 'Conjured Mana Cake':
+        return new ConjuredProductProcessor();
       default:
         return new DefaultProductProcessor();
     }
